@@ -46,14 +46,6 @@ class Game{
         var index =0;
         drawSprites();
 
-        for(var plr in allPlayers){
-        
-            index = index+1;
-            x = 500-allPlayers[plr].distance;
-            y=500;
-            
-            players[index -1].x = x;
-            players[index - 1].y = y;
 
             // Differentiate the main player by printing
             // the name of the player on the basket. 
@@ -64,8 +56,8 @@ class Game{
                 x = 500-allPlayers[plr].distance;
                 y=500;
               
-                players[index-1].x = x;
-                players[index-1].y = y;
+                players[index -1].x = x;
+                players[index -1].y = y;
               
                 if (index === player.index) {
               
@@ -75,7 +67,7 @@ class Game{
                 }
               }
 
-        }
+        
 
 
         // Give movements for the players using arrow keys
@@ -97,28 +89,28 @@ class Game{
 
         // Create and spawn fruits randomly
 
-        if (framCount % 20 === 0 ) {
+        if (frameCount % 20 === 0 ) {
 
             fruits = createSprite (random (100 , 1000),0, 100, 100,);
             fruits.velocityY = 6;
           
             var rand = Math.round(random (1,5));
           
-            switch (rand0){
+            switch (rand){
           
               case 1: fruits.addImage("fruit1",fruit1_img);
               break;
           
-              case 2: fruits.addImage("fruits1",fruits2_img);
+              case 2: fruits.addImage("fruit1",fruit2_img);
               break;
           
-              case 3: fruits.addImage("fruits1",fruits3_img);
+              case 3: fruits.addImage("fruit1",fruit3_img);
               break;
           
-              case 4: fruits.addImage("fruits1",fruits4_img);
+              case 4: fruits.addImage("fruit1",fruit4_img);
               break;
           
-              case 5: fruits.addImage("fruits1",fruits5_img);
+              case 5: fruits.addImage("fruit1",fruit5_img);
               break;
             }
             
@@ -126,6 +118,10 @@ class Game{
           
           }
 
+          player.score = 0;
+
+
+          
         for(var i=0;i<fruitGroup.length;i++){
                          if(fruitGroup.get(i).isTouching(players)){
                              fruitGroup.get(i).destroy();
@@ -133,6 +129,7 @@ class Game{
                              player.update();
                          }
 }
+
 
         
     }
